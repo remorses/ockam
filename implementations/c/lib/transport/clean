@@ -1,0 +1,6 @@
+rm -rf CMakeFiles
+rm CMakeCache*
+rm Makefile
+rm *.a
+rm *.cmake
+rm -rf ~/work/ockam/implementations/c/_build
