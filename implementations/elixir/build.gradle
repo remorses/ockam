@@ -9,8 +9,7 @@ task build {
   doLast {
     builderExec 'debian', {
       script '''
-        make
-        mix compile
+        mix do deps.get, compile
       '''
     }
   }
@@ -21,7 +20,7 @@ task test {
   doLast {
     builderExec 'debian', {
       script '''
-        mix test
+        mix do deps.get, test
       '''
     }
   }
