@@ -31,7 +31,7 @@ include(ockam_copts)
 include(ockam_cc_binary)
 include(ockam_cc_library)
 include(ockam_cc_test)
-include(ockam_alwayslink)
+include(ockam_cc_alwayslink)
 
 string(JOIN " " CMAKE_CXX_FLAGS ${OCKAM_DEFAULT_COPTS})
 
@@ -43,7 +43,7 @@ endif()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
-include(external_cc_library)
+#!! include(external_cc_library)
 
 # We don't want builds stomping all over the source directory
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR AND NOT MSVC_IDE)

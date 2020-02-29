@@ -79,4 +79,4 @@ set(BENCHMARK_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
 # Third party: cmocka
 #-------------------------------------------------------------------------------
 
-include(ockam_cmocka)
+#include(ockam_cmocka)
