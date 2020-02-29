@@ -7,13 +7,17 @@ project(ockam_transport C)
 # Set directory locations #
 ###########################
 
-set(OCKAM_INC_DIR $ENV{OCKAM_C_BASE}/include)
+if( NOT DEFINED OCKAM_C_BASE )
+  set(OCKAM_C_BASE $ENV{OCKAM_C_BASE})
+endif()
+
+set(OCKAM_INC_DIR ${OCKAM_C_BASE}/include)
 set(TRANSPORT_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(TRANSPORT_INC_DIR ${OCKAM_INC_DIR}
   ${TRANSPORT_SRC_DIR})
 
 set(CMAKE_BINARY_DIR $ENV{OCKAM_C_BASE}/_build)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $ENV{OCKAM_C_BASE}/_build/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OCKAM_C_BASE}/_build/lib)
 
 #################
 # Build Options #

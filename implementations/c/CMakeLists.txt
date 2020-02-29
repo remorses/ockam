@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 
+# Set target platform and debug/release here
+
+
 if (ENV{VERBOSE})
     set(CMAKE_INSTALL_MESSAGE ALWAYS)
 else()
@@ -14,6 +17,11 @@ project(ockam
 )
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS OFF CACHE BOOL "")
+
+# Set up paths for build outputs
+set(OCKAM_C_BASE ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_BINARY_DIR {OCKAM_C_BASE}/_build)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 set(OCKAM_IDE_FOLDER Ockam)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
