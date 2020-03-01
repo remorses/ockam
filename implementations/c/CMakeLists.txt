@@ -1,13 +1,12 @@
 cmake_minimum_required(VERSION 3.14)
 
-# Set target platform and debug/release here
-
-
 if (ENV{VERBOSE})
     set(CMAKE_INSTALL_MESSAGE ALWAYS)
 else()
     set(CMAKE_INSTALL_MESSAGE LAZY)
 endif()
+
+set(OCKAM_SOURCE_DIR ${CMAKE_CURRENT_DIRECTORY})
 
 # Load helper modules
 list(INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_SOURCE_DIR}/cmake")

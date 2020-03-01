@@ -3,21 +3,18 @@ project(ockam_transport C)
 
 # Ockam Transport
 
-###########################
-# Set directory locations #
-###########################
+include(${CMAKE_CURRENT_SOURCE_DIR}/ockam_local_options.cmake)
 
-if( NOT DEFINED OCKAM_C_BASE )
-  set(OCKAM_C_BASE $ENV{OCKAM_C_BASE})
-endif()
+# Set directory locations #
 
 set(OCKAM_INC_DIR ${OCKAM_C_BASE}/include)
 set(TRANSPORT_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(TRANSPORT_INC_DIR ${OCKAM_INC_DIR}
   ${TRANSPORT_SRC_DIR})
 
-set(CMAKE_BINARY_DIR $ENV{OCKAM_C_BASE}/_build)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OCKAM_C_BASE}/_build/lib)
+message(STATUS "CMAKE_BUILD_TYPE         : " "${CMAKE_BUILD_TYPE}")
+message(STATUS "CMAKE_GENERATOR_PLATFORM : " "${CMAKE_GENERATOR_PLATFORM}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OCKAM_C_BASE}/_build/lib/${CMAKE_BUILD_TYPE})
 
 #################
 # Build Options #

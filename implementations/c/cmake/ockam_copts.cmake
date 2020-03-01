@@ -5,9 +5,9 @@
 set(OCKAM_C_STANDARD 99)
 set(OCKAM_CXX_STANDARD 17)
 
-if(ockam_SOURCE_DIR)
-  # ockam_SOURCE_DIR is set when building from implementations/c
-  set(OCKAM_ROOT_DIR ${ockam_SOURCE_DIR})
+if(OCKAM_SOURCE_DIR)
+  # OCKAM_SOURCE_DIR is set when building from implementations/c
+  set(OCKAM_ROOT_DIR ${OCKAM_SOURCE_DIR})
 else()
   # Otherwise, we can get the same thing by getting the
   # parent directory of this module's directory
