@@ -2,8 +2,24 @@
 plugins {
     id 'network.ockam.gradle.host' version '1.0.0'
     id 'network.ockam.gradle.builders' version '1.0.0'
-} 
+}
 
+task build {
+    onlyIf { host.debianBuilder.enabled }
+    doLast {
+      builderExec 'debian', {
+        script '''
+          rm -rf _build/_b
+          mkdir -p _build/_b
+          cd _build/_b
+          cmake ../..
+          make
+        '''
+      }
+    }
+}
+
+/*
 task getDependencies {
     doFirst {
         exec {
@@ -28,3 +44,4 @@ task clean {
 }
 
 build.mustRunAfter(getDependencies)
+*/

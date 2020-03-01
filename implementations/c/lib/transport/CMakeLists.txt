@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.14)
-project(ockam_transport C)
 
 # Ockam Transport
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/ockam_local_options.cmake)
+if(OCKAM_C_TARGET_PLATFORM STREQUAL "Pi")
+  include(${OCKAM_C_BASE}/tools/cmake/toolchains/raspberry-pi.cmake)
+endif()
+
+project(ockam_transport C)
 
 # Set directory locations #
 
@@ -13,8 +17,8 @@ set(TRANSPORT_INC_DIR ${OCKAM_INC_DIR}
   ${TRANSPORT_SRC_DIR})
 
 message(STATUS "CMAKE_BUILD_TYPE         : " "${CMAKE_BUILD_TYPE}")
-message(STATUS "CMAKE_GENERATOR_PLATFORM : " "${CMAKE_GENERATOR_PLATFORM}")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OCKAM_C_BASE}/_build/lib/${CMAKE_BUILD_TYPE})
+message(STATUS "OCKAM_C_TARGET_PLATFORM  : " "${OCKAM_C_TARGET_PLATFORM}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OCKAM_C_BASE}/_build/${OCKAM_C_TARGET_PLATFORM}/lib/${CMAKE_BUILD_TYPE})
 
 #################
 # Build Options #
