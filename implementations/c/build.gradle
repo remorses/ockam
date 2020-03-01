@@ -12,8 +12,18 @@ task build {
           rm -rf _build/_b
           mkdir -p _build/_b
           cd _build/_b
-          cmake ../..
+          cmake -DOCKAM_C_TARGET_PLATFORM="Pi" -DCMAKE_BUILD_TYPE=Debug ../..
           make
+          rm -rf *
+          cmake -DOCKAM_C_TARGET_PLATFORM="Pi" -DCMAKE_BUILD_TYPE=Release ../..
+          make
+          rm -rf *
+          cmake -DOCKAM_C_TARGET_PLATFORM="Darwin" -DCMAKE_BUILD_TYPE=Debug ../..
+          make
+          rm -rf *
+          cmake -DOCKAM_C_TARGET_PLATFORM="Darwin" -DCMAKE_BUILD_TYPE=Release ../..
+          make
+          rm -rf *
         '''
       }
     }

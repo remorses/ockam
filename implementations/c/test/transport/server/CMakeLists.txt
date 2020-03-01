@@ -1,31 +1,16 @@
 cmake_minimum_required(VERSION 3.14)
 
-###########################
-# Path & Compiler Options #
-###########################
-
-# Always load the path.cmake file FIRST
-include($ENV{OCKAM_C_BASE}/tools/cmake/path.cmake)
-
-# This must be included BEFORE the project declaration
-
-if($ENV{PLATFORM} MATCHES "PI")
-	message("Building for PI")
-	include(${OCKAM_C_BASE}/tools/cmake/toolchains/raspberry-pi.cmake)
-else()
-	set(CMAKE_C_STANDARD 99)
-	set(CMAKE_C_FLAGS "-std=c99 -g")
+include(${CMAKE_CURRENT_SOURCE_DIR}/ockam_local_options.cmake)
+if(OCKAM_C_TARGET_PLATFORM STREQUAL "Pi")
+  include(${OCKAM_C_BASE}/tools/cmake/toolchains/raspberry-pi.cmake)
 endif()
 
-###########
-# Project #
-###########
+message(STATUS "CMAKE_BUILD_TYPE         : " "${CMAKE_BUILD_TYPE}")
+message(STATUS "OCKAM_C_TARGET_PLATFORM  : " "${OCKAM_C_TARGET_PLATFORM}")
 
 project(transport_server_test)
 
-###########################
-# Set directory locations #
-###########################
+# Set directory locations
 
 set(TEST_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(OCKAM_SRC_DIR ${OCKAM_C_BASE}/source/ockam)
@@ -33,6 +18,9 @@ set(OCKAM_INC_DIR ${OCKAM_C_BASE}/include)
 
 set(TRANSPORT_SRC_DIR ${OCKAM_SRC_DIR}/transport)
 set(BINARY_DIR _build/$ENV{PLATFORM})
+
+set(CMAKE_BINARY_DIR ${OCKAM_C_BASE}/_build/${OCKAM_C_TARGET_PLATFORM}/lib/${CMAKE_BUILD_TYPE})
+
 
 #################
 # Build Options #

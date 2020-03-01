@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 3.14)
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/ockam_local_options.cmake)
+if(OCKAM_C_TARGET_PLATFORM STREQUAL "Pi")
+  include(${OCKAM_C_BASE}/tools/cmake/toolchains/raspberry-pi.cmake)
+endif()
+
 project(ockam_log C)
 
 
@@ -9,8 +15,7 @@ project(ockam_log C)
 set(LOG_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(OCKAM_INC_DIR $ENV{OCKAM_C_BASE}/include)
 
-set(CMAKE_BINARY_DIR $ENV{OCKAM_C_BASE}/_build)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OCKAM_C_BASE}/_build)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OCKAM_C_BASE}/_build/${OCKAM_C_TARGET_PLATFORM}/lib/${CMAKE_BUILD_TYPE})
 
 #################
 # Build Options #

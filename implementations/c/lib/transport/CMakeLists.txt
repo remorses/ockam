@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 # Ockam Transport
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/ockam_local_options.cmake)
+
 if(OCKAM_C_TARGET_PLATFORM STREQUAL "Pi")
   include(${OCKAM_C_BASE}/tools/cmake/toolchains/raspberry-pi.cmake)
 endif()
